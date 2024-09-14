@@ -23,14 +23,14 @@
 
 
 // read WebURL from current browser
-var WebURL         = window.location.protocol + "//" + window.location.hostname + "/";  // Website URL is:  https://domain.com/
+var WebURL         = window.location.protocol + "//" + window.location.hostname;  // Website URL is:  https://domain.com/
 // WebURL correction if not ends with /
-if (WebURL.substring(WebURL.length-1) != "/")
-{
-	WebURL = WebURL + "/";
-	console.log('Corrected WebURL, does not end with / -> New WebURL : ', WebURL);
-}
-var API            = WebURL + "api/";   						// API address is:  https://domain.com/api/
+//if (WebURL.substring(WebURL.length-1) != "/")
+//{
+//	WebURL = WebURL + "/";
+//	console.log('Corrected WebURL, does not end with / -> New WebURL : ', WebURL);
+//}
+var API            = WebURL + ":4000/api/";   						// API address is:  https://domain.com/api/
 // API correction if not ends with /
 if (API.substring(API.length-1) != "/")
 {
