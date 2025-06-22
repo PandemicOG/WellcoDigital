@@ -1,43 +1,29 @@
 /*!
-  * Miningcore.js v1.02
+  * Miningcore.js v1.02 - Modified Configuration
   * Copyright 2020 Authors (https://github.com/minernl/Miningcore)
+  * Custom API Configuration for Tenzura Solo Pool
   */
 
 // --------------------------------------------------------------------------------------------
+// Static Pool Configuration
 // --------------------------------------------------------------------------------------------
-// Current running domain (or ip address) url will be read from the browser url bar.
-// You can check the result in you browser development view -> F12 -> Console 
-// -->> !! no need to change anything below here !! <<--
-// --------------------------------------------------------------------------------------------
-// --------------------------------------------------------------------------------------------
+var WebURL = window.location.protocol + "//" + window.location.hostname;  // Website URL (auto-detected)
+var API = "http://tenzurasolo.duckdns.org:4000/api/";                    // Fixed API endpoint
+var stratumAddress = "tenzurasolo.duckdns.org";                          // Fixed stratum address
 
+// Ensure API URL ends with slash
+if (!API.endsWith('/')) {
+    API = API + '/';
+}
 
+// Log configuration
+console.log('MiningCore.WebUI URL : ', WebURL);
+console.log('API Endpoint        : ', API);
+console.log('Stratum Address     : ', "stratum+tcp://" + stratumAddress);
+console.log('Current Page        : ', window.location.href);
 
-
-
-
-
-
-
-
-
-
-// read WebURL from current browser
-var WebURL         = window.location.protocol + "//" + window.location.hostname;  // Website URL is:  https://domain.com/
-// WebURL correction if not ends with /
-//if (WebURL.substring(WebURL.length-1) != "/")
-//{
-//	WebURL = WebURL + "/";
-//	console.log('Corrected WebURL, does not end with / -> New WebURL : ', WebURL);
-//}
-var API            = WebURL + ":4000/api/";   						// API address is:  https://domain.com/api/
-// API correction if not ends with /
-if (API.substring(API.length-1) != "/")
-{
-	API = API + "/";
-	console.log('Corrected API, does not end with / -> New API : ', API);
-} 
-var stratumAddress = window.location.hostname;           				// Stratum address is:  domain.com
+// Initialize default page
+currentPage = "index";
 
 
 

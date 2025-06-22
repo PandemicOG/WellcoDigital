@@ -1,0 +1,140 @@
+/* Dark Theme Overrides */
+:root {
+  --bg-dark: #121212;
+  --bg-darker: #1a1a1a;
+  --bg-card: #1e1e1e;
+  --bg-header: #252525;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --border-color: #333;
+}
+
+/* ==================== */
+/* Base Elements        */
+/* ==================== */
+body {
+  background-color: var(--bg-dark) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ==================== */
+/* Navigation           */
+/* ==================== */
+.main-header, .sidebar, .main-footer {
+  background-color: var(--bg-darker) !important;
+  border-color: var(--border-color) !important;
+}
+
+.sidebar-menu a {
+  color: var(--text-secondary) !important;
+}
+
+.sidebar-menu a:hover {
+  background: #2d2d2d !important;
+}
+
+/* Dark Mode Toggle Active State */
+.sidebar-menu .nav-theme.active {
+  background-color: #2d2d2d;
+}
+
+.sidebar-menu .nav-theme .nav-link:hover {
+  background-color: #333;
+}
+
+/* ==================== */
+/* Cards & Containers   */
+/* ==================== */
+.card {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.card-header {
+  background-color: var(--bg-header) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Dark variants of existing color classes */
+.bg-green {
+  background-color: #1a4a1a !important;
+}
+
+.bg-aqua {
+  background-color: #1a3a4a !important;
+}
+
+.bg-yellow {
+  background-color: #4a3a1a !important;
+}
+
+.bg-red {
+  background-color: #4a1a1a !important;
+}
+
+/* ==================== */
+/* Tables               */
+/* ==================== */
+.table {
+  color: var(--text-primary) !important;
+  background-color: var(--bg-card) !important;
+}
+
+.table thead th {
+  background-color: var(--bg-header) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.table tbody tr {
+  background-color: var(--bg-card) !important;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #2a2a2a !important;
+}
+
+/* ==================== */
+/* Form Elements        */
+/* ==================== */
+.form-control {
+  background-color: #2d2d2d !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ==================== */
+/* Buttons              */
+/* ==================== */
+.btn {
+  color: var(--text-primary) !important;
+}
+
+.btn-info {
+  background-color: #0066cc !important;
+  border-color: #005bb7 !important;
+}
+
+/* ==================== */
+/* Charts               */
+/* ==================== */
+.ct-grid {
+  stroke: rgba(255, 255, 255, 0.1) !important;
+}
+
+.ct-label {
+  fill: rgba(255, 255, 255, 0.6) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ==================== */
+/* Info Boxes           */
+/* ==================== */
+.info-box {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.info-box-icon {
+  background-color: var(--bg-header) !important;
+}
