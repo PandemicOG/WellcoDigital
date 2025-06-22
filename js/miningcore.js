@@ -8,8 +8,8 @@
 // Static Pool Configuration
 // --------------------------------------------------------------------------------------------
 var WebURL = window.location.protocol + "//" + window.location.hostname;  // Website URL (auto-detected)
-var API = "http://tenzurasolo.duckdns.org:4000/api/";                    // Fixed API endpoint
-var stratumAddress = "tenzurasolo.duckdns.org";                          // Fixed stratum address
+var API = "https://api.wellcodigital.com/api/";                    // Fixed API endpoint
+var stratumAddress = "wellcodigital.duckdns.org";                          // Fixed stratum address
 
 // Ensure API URL ends with slash
 if (!API.endsWith('/')) {
