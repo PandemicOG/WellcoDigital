@@ -15,7 +15,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <meta name="msapplication-TileImage" content="img/pool-icon.png">
-      <title>Miningcore.WebUI</title>
+      <title>WellcoDigital</title>
       <link rel="apple-touch-icon" href="img/pool-icon.png">
       <link rel="apple-touch-icon" sizes="76x76" href="img/pool-icon.png">
       <!-- 
@@ -157,7 +157,7 @@
             <header class="main-index-header fixed">
                <nav class="navbar" >
                   <a>  </a>
-                  <span class="header-text"><b>Miningcore</b> - making mining easy</span>
+                  <span class="header-text"><b>WellcoDigital</b> - Central USA Stratum</span>
                   <!-- Navbar Right Menu -->
                   <div class="navbar-custom-menu">
                      <ul class="nav navbar-nav">
@@ -179,10 +179,10 @@
                   <div class="col-12">
                      <div class="card card-shadow card-body">
                         <center>
-                           <h5> Welcome to Miningcore Mining Pool</h5>
+                           <h5> Welcome to WellcoDigital Mining Pools</h5>
                         </center>
                         <hr>
-                        <p>Low fee, high performance and a nice design. </br> Pick a coin, connect you miner and make some coins.</p>
+                        <p>Low fee, high performance. </br> Pick a coin, connect you miner, and make some coins.</p>
                         </br>
                      </div>
                   </div>
@@ -218,10 +218,10 @@
             <!-- INDEX FOOTER --> 
             <footer class="main-index-footer">
                <strong>
-                  <a target="_blank" href="https://github.com/minernl/Miningcore.WebUI">
-                     &copy; <script>document.write(new Date().getFullYear())</script> made by COINStoMINE.eu
+                  <a target="_blank" href="https://www.google.com">
+                     &copy; <script>document.write(new Date().getFullYear())</script> made by PandemicOG
                   </a>
-                  - Version 1.02
+                  - Version 1.0.0
                </strong>
             </footer>
          </div>
@@ -238,7 +238,7 @@
             <header class="main-header fixed">
                <nav class="navbar navbar-static-top" role="navigation">
                   <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button"><i class="fas fa-bars"></i></a>
-                  <span class="header-text"><b>Miningcore</b> - making mining easy</span>
+                  <span class="header-text"><b>WellcoDigital</b> - Central USA Stratum</span>
                   <!-- Navbar Right Menu -->
                   <div class="navbar-custom-menu">
                      <ul class="nav navbar-nav">
@@ -688,111 +688,43 @@
                                  </p>
                                  <h4>How will I get paid?</h4>
                                  <p>
-                                    All of our pools utilize the PPLNS payment system. PPLNS
-                                    is short for "Pay Per Last N Shares". The image below
-                                    illustrates the system. One round has an arbitrary
-                                    number of shares which is solely based on sheer luck.
-                                    Proportional reward systems only consider shares of one
-                                    round when calculating rewards. PPLNS however, uses a
-                                    quite constant number N of shares for calculating
-                                    rewards. This number N changes only with the difficulty:
+                                    All of our pools utilize the SOLO payment system. SOLO
+                                    miners will be paid once a block has been found.
                                  </p>
-                                 <img alt="PPLNS" src="img/shares_round.png" style="width:100%;max-width: 500px;">
+                                 <img alt="SOLO" src="img/solo.png" style="width:100%;max-width: 500px;">
                                  <p>&nbsp;</p>
                                  <p>
                                     As you know the number of shares needed to solve a block
-                                    within a round is different. Round one and three needed
-                                    (difficulty * 2) shares to be solved. Round two and four
-                                    are quite short rounds. There were less than (difficulty
-                                    * 2) shares necessary to solve them. Round five however
-                                    is a very long round which means the pool needed more
-                                    than (difficulty * 2) shares to solve the block. From
-                                    this follows that:
+                                    within a round is different. It all depends on network
+                                    difficulty. DYOR for more information.
                                  </p>
                                  <ul>
-                                    <li>
-                                       Rounds one and three are like proportional rounds. All
-                                       of your shares from the given round are considered for
-                                       reward calculations
-                                    </li>
-                                    <li>
-                                       For rounds two and four, shares from the previous
-                                       rounds are considered for calculations as well (marked
-                                       green). In other words: regardless of round boundaries
-                                       we always consider the last
-                                       <em>(difficulty * 2)</em> shares. Your portion of the
-                                       amount of shares is used to calculate your reward.
-                                    </li>
-                                    <li>
-                                       Round five however is very long. In this round your
-                                       lowermost shares (within the marked red part) are
-                                       silently dropped if they are not within the last
-                                       <em>(difficulty * 2)</em> shares.
                                     </li>
                                  </ul>
-                                 <p>
-                                    <strong>PPLNS favors constant and/or occasional loyal pool
-                                    members over pool hoppers.
-                                    </strong>
-                                    Pool hoppers are betting for a "quick win" (like round
-                                    two above) with low shares per round. If the round
-                                    exceeds a certain amount of shares they "hop" to another
-                                    proportional pool which started a new round more
-                                    recently. This assures better rewards for pool hoppers
-                                    over occasional or constant miners which are loyal to
-                                    their pool. Pool hopping however implies that pool
-                                    hoppers need to know when a round is started and how
-                                    much shares are considered for reward. This is very easy
-                                    with proportional reward system. While using PPLNS, this
-                                    is no longer true. On long rounds (like round five
-                                    above) the pool hoppers shares won’t be considered for
-                                    reward calculations in favor of loyal miners. This is
-                                    due to the fact that pool hoppers only mine on the
-                                    beginning of rounds. On short and normal rounds pool
-                                    hoppers won’t lose their shares. Due to the fact that
-                                    shares from previous rounds from loyal miners are
-                                    considered twice (or even more often on extremely short
-                                    rounds) the pool hopper won’t get the same reward as
-                                    from proportional reward system.
                                  </p>
                                  <p>
                                     Assuming blocks have been found, payouts are processed
-                                    and send every 10 minutes. This process is fully automated.
+                                    and sent every 10 minutes. This process is fully automated.
                                  </p>
                                  <h4>When will I get paid?</h4>
                                  <p>
                                     You won't see any balance in your account until a block
                                     has been found by the pool and after the block has
-                                    reached a mature status. This may take a couple hours,
-                                    depending on the coin. As soon as a block can be
-                                    considered 'mature' by the pool, your shares will be
-                                    used to calculate your contribution towards finding the
-                                    block. The more you've contributed, the higher your cut
-                                    of the block reward will be. Your cut of the block
-                                    reward will then be credited to your pending balance. If
+                                    reached a mature status. This may take a couple hours, or days,
+                                    depending on the coin and difficulty. If
                                     your balance reaches or exceeds the pool's minimum
                                     payout amount, the pool will transfer your
                                     <b>entire</b> balance to your wallet and
                                     <b>reset</b> your pending balance to zero. The minimum
-                                    payout for each pool is listed in its 'Pool Stats' area.
+                                    payout for each pool is listed in 'Stats'.
                                  </p>
                                  <p>
                                     We are a small pool for the time being, and as such it
                                     may take some time to find a block. On larger pools you
                                     would see some balance earlier because they will find
                                     blocks faster, but you will get a smaller share of the
-                                    reward than what you would in a smaller pool. Over time
-                                    you will earn more or less the same amount when mining
-                                    on a large pool or on a small one.
-                                 </p>
-                                 <p>
-                                    In other words, the rewards you get on average are
-                                    exactly proportional to your part in the total work done
-                                    by the pool. If you mine in a pool
-                                    <strong>twice as large</strong>, the pool will collect
-                                    twice as much rewards but your share in them will be
-                                    <strong>cut by half</strong>, meaning you get the same
-                                    on average.
+                                    reward than what you would in a smaller pool. Over time,
+                                    you will earn the same amount.
                                  </p>
                                  <p>
                                     Trustworthiness, reliability, support and low latency
@@ -830,8 +762,8 @@
             </div>
             <footer class="main-footer">
                <strong>
-                  <a target="_blank" href="https://github.com/minernl/Miningcore.WebUI">
-                     &copy; <script>document.write(new Date().getFullYear())</script> made by COINStoMINE.eu
+                  <a target="_blank" href="https://www.google.com">
+                     &copy; <script>document.write(new Date().getFullYear())</script> made by PandemicOG
                   </a>
                </strong>
             </footer>
