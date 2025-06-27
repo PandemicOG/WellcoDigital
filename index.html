@@ -677,7 +677,7 @@
                                  </h4>
                                  <p>
                                     Pool and miner hashrates are re-calculated every ten
-                                    minutes. Therefore it can take a maximum of ten minutes
+                                    minutes. Therefore it can take up to ten minutes
                                     for your hashrate to update depending on the submission
                                     time of your first valid share. The hashrate we display
                                     at the pool is a rough approximation of your hashrate
@@ -688,26 +688,64 @@
                                  </p>
                                  <h4>How will I get paid?</h4>
                                  <p>
-                                    All of our pools utilize the SOLO payment system. SOLO
-                                    miners will be paid once a block has been found.
-                                 </p>
+                                    All of our pools utilize the PPS, PPLNS, or SOLO payment system.
                                  <img alt="SOLO" src="img/solo.png" style="width:100%;max-width: 500px;">
                                  <p>&nbsp;</p>
                                  <p>
-                                    As you know the number of shares needed to solve a block
-                                    within a round is different. It all depends on network
-                                    difficulty. DYOR for more information.
+                                 <h4>PPS</h4>
+                                 </p>
+                                 <p>
+                                    The PPS (Pay Per Share) scheme rewards miners based solely on the number of shares they submit to the pool. A share represents a unit of valid work performed by a miner toward finding a block.
+                                 </p>
+                                 <p>
+                                    Share Value: The payout per share is calculated upfront. It's primarily determined by the cryptocurrency's current network difficulty and the pool's set block reward.
+                                 </p>
+                                 <p>
+                                    Payout Guarantee: Crucially, miners receive payment for every valid share they contribute, regardless of whether the pool actually finds a block at that moment.
+                                 </p>
+                                 <p>
+                                    Pool's Risk & Predictability: The pool operator takes on the risk of variable block discovery times. They rely on the statistical predictability of block finding over time (based on the pool's total hashing power) to ensure incoming block rewards cover the consistent share payouts they make.
+                                 </p>
+                                 <p>
+                                    Key Benefits: This model provides miners with:
+                                 </p>
+                                 <p>
+                                    Highly Regular & Predictable Income: Payments are steady, not tied to the pool's luck in finding blocks.
+                                    Elimination of Luck Variance: A miner's income depends only on their contributed work (shares), not on when blocks are found.
+                                    Immediate Payouts: Miners are paid for their work as they submit shares, without waiting for block confirmation.
+                                    In essence: PPS pays you a fixed amount for every unit of work (share) you do, immediately and predictably. The pool handles the  statistical fluctuations of block discovery to make this possible.
+                                 </p>
+                                 <p>
+                                 <h4>PPLNS</h4>
+                                 </p>
+                                 <p>
+                                    PPLNS pays miners only when the pool successfully finds a block. When a block is found, the pool looks back at the most recent shares miners contributed (specifically, the last "N" shares submitted to the pool) and calculates each miner's reward based on their share of those recent contributions.
+                                 </p>
+                                 <p>
+                                    This approach deters miners from frequently switching pools (pool hopping) because they need their shares to be within the recent "N" shares when a block is found to get paid. Miners experience a delay in receiving rewards as they must wait for blocks to be found and for their shares to fall within the relevant window.
+                                 </p>
+                                 <p>
+                                    Payouts fluctuate significantly because they depend directly on the pool's actual luck in finding blocks – rewards can be much higher or lower than theoretical estimations in the short term. However, over time and on average, the total rewards miners earn under PPLNS are expected to be statistically similar to what they would earn under schemes like PPS, despite the short-term variance.
                                  </p>
                                  <ul>
                                     </li>
                                  </ul>
                                  </p>
                                  <p>
-                                    Assuming blocks have been found, payouts are processed
-                                    and sent every 10 minutes. This process is fully automated.
+                                 <h4>SOLO</h4>
                                  </p>
-                                 <h4>When will I get paid?</h4>
                                  <p>
+                                    In solo mining, individual miners work independently to solve blocks on the blockchain network. Each miner constructs their own candidate block. The primary difference between blocks created by different solo miners lies in the special reward transaction (often called the coinbase transaction). This transaction specifies the miner's personal wallet address as the recipient of the block reward. The rest of the block's content (the transactions it confirms) is generally the same for all miners attempting to create the next block.
+                                 </p>
+                                 <p>
+                                    The core process of mining remains unchanged: miners connect their hardware and monitor its performance and hashrate. However, no partial rewards accumulate. Miners only receive payment if they successfully "hit the jackpot" – meaning their hardware is the first to compute a valid hash that meets the network's current difficulty target.
+                                 </p>
+                                 <p>
+                                    Upon this successful discovery, the solo miner receives the full block reward directly to their specified wallet address, plus any transaction fees included in that block. After the lockup period, the reward goes straight to the miner.
+                                 </p>
+                                 <p>
+                                 <h4>When will I get paid?</h4>
+                                 </p>
                                     You won't see any balance in your account until a block
                                     has been found by the pool and after the block has
                                     reached a mature status. This may take a couple hours, or days,
