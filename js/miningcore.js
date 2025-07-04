@@ -127,6 +127,7 @@ function loadHomePage() {
     poolCoinTableTemplate += "<td class='pool-hash'>" + _formatter(poolHashrate, 5, "H/s") + "</td>";
       poolCoinTableTemplate += "<td class='blocks'>" + value.totalBlocks + "</td>";
       poolCoinTableTemplate += "<td class='paid'>" + value.totalPaid + "</td>";
+    poolCoinTableTemplate += "<td class='payout-type'>" + value.paymentProcessing.payoutScheme + "</td>"
     poolCoinTableTemplate += "<td class='fee'>" + value.poolFeePercent + " %</td>";
     poolCoinTableTemplate += "<td class='net-hash'>" + _formatter(networkHashrate, 5, "H/s") + "</td>";
     poolCoinTableTemplate += "<td class='net-diff'>" + _formatter(networkDifficulty, 5, "") + "</td>";
