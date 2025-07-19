@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" style="background:#000">
+  <!-- Desk -->
+  <rect x="50" y="450" width="700" height="30" fill="#222" rx="5"/>
+  <rect x="100" y="420" width="600" height="30" fill="#333" rx="3"/>
+  
+  <!-- CRT Monitor -->
+  <rect x="150" y="100" width="500" height="350" fill="#444" rx="10"/>
+  <rect x="170" y="120" width="460" height="300" fill="#001a00"/>
+  
+  <!-- Screen Scanlines -->
+  <g fill="rgba(0,80,0,0.3)" stroke-width="1">
+    <path d="M170 120h460v3H170zM170 130h460v3H170z" />
+    <path d="M170 140h460v3H170zM170 150h460v3H170zM170 160h460v3H170zM170 170h460v3H170zM170 180h460v3H170zM170 190h460v3H170zM170 200h460v3H170zM170 210h460v3H170zM170 220h460v3H170zM170 230h460v3H170zM170 240h460v3H170zM170 250h460v3H170zM170 260h460v3H170zM170 270h460v3H170zM170 280h460v3H170zM170 290h460v3H170zM170 300h460v3H170zM170 310h460v3H170zM170 320h460v3H170zM170 330h460v3H170zM170 340h460v3H170zM170 350h460v3H170zM170 360h460v3H170zM170 370h460v3H170zM170 380h460v3H170zM170 390h460v3H170zM170 400h460v3H170z"/>
+  </g>
+  
+  <!-- Screen Content - CENTERED AND ALIGNED -->
+  <g text-anchor="middle" font-family="'Courier New', monospace" font-weight="700" font-size="48" fill="#f5f5f5">
+    <text x="400" y="250">wellco</text>
+    <text x="400" y="300">digital</text>
+  </g>
+  
+  <!-- Glitch Effect - ALIGNED -->
+  <g text-anchor="middle" font-family="'Courier New', monospace" font-weight="700" font-size="48" opacity="0.7">
+    <text x="403" y="253" fill="#cfcfcf">wellco</text>
+    <text x="397" y="303" fill="#cfcfcf">digital</text>
+  </g>
+  
+  <!-- Screen Border -->
+  <rect x="170" y="120" width="460" height="300" fill="none" stroke="#0f0" stroke-width="2" stroke-dasharray="4 4"/>
+  
+  <!-- Floppy Disk -->
+  <rect x="650" y="380" width="40" height="40" fill="#333"/>
+  <rect x="655" y="385" width="30" height="30" fill="#0a0"/>
+  <rect x="660" y="390" width="20" height="10" fill="#000"/>
+  
+  <!-- Keyboard -->
+  <rect x="250" y="420" width="300" height="60" fill="#333" rx="5"/>
+  <rect x="260" y="430" width="280" height="40" fill="#111" rx="3"/>
+  
+  <!-- Coffee Mug -->
+  <rect x="580" y="380" width="30" height="40" fill="#444"/>
+  <rect x="575" y="380" width="40" height="10" fill="#555"/>
+  
+  <!-- Status LEDs -->
+  <circle cx="620" cy="130" r="5" fill="#f00"/>
+  <circle cx="650" cy="130" r="5" fill="#0f0"/>
+</svg>
