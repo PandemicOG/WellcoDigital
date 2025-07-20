@@ -1,4 +1,4 @@
-# wellcodigitcal.com
+# wellcodigital.com
 
 Forked from https://github.com/TheRetroMike/Miningcore.WebUI.
 Heavily Modified. Change api to display your pool stats.
@@ -16,7 +16,7 @@ Go to support section, send email request.
 
 
 <b>Roadmap:</b></br>
-- add multiple SOLO miningcore pool servers in one website.
+- add multiple SOLO/PROP/PPLNS miningcore pool servers in one website.
 - add more color skins out off the box.
 - add optional payment threshold
 - add optional light/dark theme.
