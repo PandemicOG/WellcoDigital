@@ -474,7 +474,7 @@
                 <div class="info-card">
                     <h3>Network Hashrate</h3>
                     <div class="info-value" id="network-hashrate">0.00</div>
-                    <div class="info-label">GH/s</div>
+                    <div class="info-label">H/s</div>
                 </div>
 
                 <div class="info-card">
@@ -512,7 +512,7 @@
         const SECONDS_PER_MONTH = SECONDS_PER_DAY * 30;
 
         // API endpoint
-        const SUMMARY_API = 'https://gemma.wellcodigital.com/api/gemma-summary';
+        const SUMMARY_API = 'https://api.wellcodigital.com/api/pools/gemma-solo';
 
         // DOM elements
         const hashrateInput = document.getElementById('hashrate');
@@ -559,12 +559,9 @@
         }
 
         // Calculate mining earnings
-        function calculateEarnings(userHashrateMH, networkHashrateGH) {
+        function calculateEarnings(userHashrateMH, networkHashrateH) {
             // Convert user hashrate from MH/s to H/s
             const userHashrateH = userHashrateMH * 1e6;
-
-            // Convert network hashrate from GH/s to H/s
-            const networkHashrateH = parseFloat(networkHashrateGH) * 1e9;
 
             // Calculate user's share of the network
             const share = userHashrateH / networkHashrateH;
@@ -605,8 +602,11 @@
 
                 // Fetch network data
                 const summary = await getNetworkSummary();
-                const difficulty = parseFloat(summary.difficulty);
-                const networkHashrate = summary.hashrate;
+                
+                // Extract values from new API structure
+                const poolData = summary.pool;
+                const difficulty = poolData.networkStats.networkDifficulty;
+                const networkHashrate = poolData.networkStats.networkHashrate;
 
                 // Calculate earnings
                 const earnings = calculateEarnings(userHashrate, networkHashrate);
@@ -624,7 +624,7 @@
                     resultsDiv.classList.add('visible');
                 }, 100);
             } catch (err) {
-                errorDiv.textContent = err.message;
+                errorDiv.textContent = 'Error: ' + err.message;
                 errorDiv.style.display = 'block';
             } finally {
                 calculateBtn.innerHTML = '<i class="fas fa-calculator"></i> Calculate Earnings';
