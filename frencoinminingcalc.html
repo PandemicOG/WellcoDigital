@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$FREN Frencoin Mining Calculator - Pepe's Meme Vault</title>
+    <style>
+        body {
+            background: url('https://pbs.twimg.com/media/GEAy9BjboAAxxby?format=png&name=900x900') no-repeat center center fixed, #111;
+            background-size: cover;
+            color: #0f0;
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        h1 {
+            color: #ff69b4;
+            text-shadow: 0 0 10px #0f0, 0 0 20px #ff69b4;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            border: 3px solid #0f0;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 0 20px #ff69b4;
+        }
+        input[type="number"] {
+            background: #222;
+            color: #0f0;
+            border: 2px solid #ff69b4;
+            padding: 10px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        button {
+            background: #ff69b4;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #0f0;
+        }
+        .results, .network-info {
+            margin: 20px 0;
+            font-size: 1.2em;
+            color: #fff;
+            text-shadow: 0 0 5px #0f0;
+        }
+        .results p, .network-info p {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .links a {
+            color: #ff69b4;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        .links a:hover {
+            text-shadow: 0 0 10px #0f0;
+        }
+        .note, .footer {
+            color: #0f0;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+        img#coin-icon {
+            width: 50px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .pepe-gif {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://pbs.twimg.com/media/GDdRdulaQAAfjiJ?format=jpg&name=large" alt="Fren Dancing" class="pepe-gif">
+    <h1><img src="img/coin/icon/fren.png" id="coin-icon">$FREN Frencoin Mining Calculator</h1>
+    <p>Fren's Meme Vault: Stack $FREN, FeelsGoodMan!</p>
+    <div class="container">
+        <div>
+            <label for="hashrate">Your Hashrate (MH/s):</label><br>
+            <input type="number" id="hashrate" min="0" step="0.01" placeholder="Enter your hashrate">
+        </div>
+        <button onclick="calculateEarnings()">Calculate $FREN Gains, Fren!</button>
+        <div class="results">
+            <p>Hourly Earnings: <span id="hourly">0.00</span> $FREN</p>
+            <p>Daily Earnings: <span id="daily">0.00</span> $FREN</p>
+            <p>Weekly Earnings: <span id="weekly">0.00</span> $FREN</p>
+            <p>Monthly Earnings: <span id="monthly">0.00</span> $FREN</p>
+        </div>
+        <div class="network-info">
+            <p>Network Hashrate: <span id="network-hashrate">0.00</span> MH/s</p>
+            <p>Current Difficulty: <span id="difficulty">0.00</span></p>
+        </div>
+        <div class="links">
+            <a href="https://adventurecoin.wellcodigital.com" target="_blank">$ADVC SOLO Pool</a>
+            <a href="https://wellcodigital.com" target="_blank">Wellco Digital</a>
+        </div>
+        <p class="note">FeelsRareMan: Calculations are estimates only. Network conditions may make Frens sad or happy!</p>
+        <p class="footer">$FREN Frencoin Mining Calculator v1.2 - API Status: <span id="api-status">Online</span></p>
+    </div>
+
+    <script>
+        async function fetchNetworkData() {
+            try {
+                const response = await fetch('https://api.wellcodigital.com/api/pools/fren-solo');
+                const data = await response.json();
+                document.getElementById('network-hashrate').textContent = (data.pool.networkStats.networkHashrate / 1e6).toFixed(2);
+                document.getElementById('difficulty').textContent = data.pool.networkStats.networkDifficulty.toFixed(2);
+                document.getElementById('api-status').textContent = 'Online';
+            } catch (error) {
+                document.getElementById('api-status').textContent = 'Offline';
+                console.error('API fetch failed:', error);
+            }
+        }
+
+        function calculateEarnings() {
+            const hashrate = parseFloat(document.getElementById('hashrate').value) || 0;
+            const networkHashrate = parseFloat(document.getElementById('network-hashrate').textContent) || 1;
+            const difficulty = parseFloat(document.getElementById('difficulty').textContent) || 1;
+            const blockTime = 30; // seconds
+            const blockReward = 10000; // $FREN per block
+
+            const blocksPerHour = 3600 / blockTime;
+            const userShare = hashrate / networkHashrate;
+            const hourlyEarnings = userShare * blockReward * blocksPerHour;
+            const dailyEarnings = hourlyEarnings * 24;
+            const weeklyEarnings = dailyEarnings * 7;
+            const monthlyEarnings = dailyEarnings * 30;
+
+            document.getElementById('hourly').textContent = hourlyEarnings.toFixed(2);
+            document.getElementById('daily').textContent = dailyEarnings.toFixed(2);
+            document.getElementById('weekly').textContent = weeklyEarnings.toFixed(2);
+            document.getElementById('monthly').textContent = monthlyEarnings.toFixed(2);
+        }
+
+        // Fetch network data on page load
+        fetchNetworkData();
+        // Refresh network data every 30 seconds
+        setInterval(fetchNetworkData, 30000);
+    </script>
+</body>
+</html>
