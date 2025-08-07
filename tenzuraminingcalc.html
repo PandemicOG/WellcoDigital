@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenzura Coin Mining Calculator</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #00ff00;
+            font-family: 'Press Start 2P', cursive;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Crect x="0" y="0" width="100%25" height="100%25" fill="none" stroke="%23222222" stroke-width="1"/%3E%3C/svg%3E');
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: #000000;
+            border: 4px solid #ff00ff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5), 0 0 40px rgba(255, 0, 255, 0.5);
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            text-shadow: 0 0 10px #00ff00;
+            margin-bottom: 20px;
+        }
+        .input-group, .result-group, .network-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px #00ff00;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background: #111111;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            font-family: 'Press Start 2P', cursive;
+            border-radius: 5px;
+        }
+        .input-group input:focus {
+            outline: none;
+            box-shadow: 0 0 10px #00ff00;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            background: #ff00ff;
+            color: #000000;
+            border: none;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+            border-radius: 5px;
+            text-shadow: 0 0 5px #000000;
+        }
+        button:hover {
+            background: #00ff00;
+            color: #000000;
+            box-shadow: 0 0 15px #00ff00;
+        }
+        .result-group div, .network-group div {
+            background: #222222;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 2px solid #ff00ff;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            text-shadow: 0 0 5px #ff00ff;
+        }
+        .links a {
+            color: #00ff00;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 10px;
+        }
+        .links a:hover {
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .note, .version, .api-status {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 10px;
+            color: #00cc00;
+        }
+        .coin-icon {
+            display: block;
+            margin: 0 auto 20px;
+            width: 64px;
+            height: 64px;
+            filter: drop-shadow(0 0 10px #ff00ff);
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+            .container {
+                padding: 15px;
+            }
+            button, .input-group input {
+                font-size: 14px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <img src="img/coin/icon/tenz.png" alt="Tenzura Coin" class="coin-icon">
+        <h1>Tenzura Coin Mining Calculator</h1>
+        <p style="text-align: center; font-size: 14px; text-shadow: 0 0 5px #ff00ff;">Calculate your potential mining earnings with real-time network data</p>
+
+        <div class="input-group">
+            <label for="hashrate">Your Hashrate (MH/s):</label>
+            <input type="number" id="hashrate" placeholder="Enter your hashrate">
+        </div>
+
+        <button onclick="calculateEarnings()">Calculate Earnings</button>
+
+        <div class="result-group">
+            <div>Hourly Earnings: <span id="hourly">0.00</span> TENZURA</div>
+            <div>Daily Earnings: <span id="daily">0.00</span> TENZURA</div>
+            <div>Weekly Earnings: <span id="weekly">0.00</span> TENZURA</div>
+            <div>Monthly Earnings: <span id="monthly">0.00</span> TENZURA</div>
+        </div>
+
+        <div class="network-group">
+            <div>Network Hashrate: <span id="network-hashrate">0.00</span> Mh/s</div>
+            <div>Current Difficulty: <span id="difficulty">0.00</span></div>
+        </div>
+
+        <div class="links">
+            <a href="https://adventurecoin.wellcodigital.com/" target="_blank">$ADVC SOLO Pool</a>
+            <a href="https://wellcodigital.com" target="_blank">Wellco Digital</a>
+        </div>
+
+        <div class="note">Note: Calculations are estimates only. Actual earnings may vary based on network conditions.</div>
+        <div class="version">Tenzura Coin Mining Calculator v1.2</div>
+        <div class="api-status">API Status: <span id="api-status">Online</span></div>
+    </div>
+
+    <script>
+        async function fetchNetworkData() {
+            try {
+                const response = await fetch('https://api.wellcodigital.com/api/pools/tenz-solo');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                const networkHashrate = data.pool.networkStats.networkHashrate;
+                const difficulty = data.pool.networkStats.networkDifficulty;
+                document.getElementById('network-hashrate').textContent = (networkHashrate / 1e6).toFixed(2); // Convert to MH/s
+                document.getElementById('difficulty').textContent = difficulty.toFixed(2);
+                document.getElementById('api-status').textContent = 'Online';
+                document.getElementById('api-status').style.color = '#00ff00';
+                return { networkHashrate, difficulty };
+            } catch (error) {
+                console.error('API Error:', error);
+                document.getElementById('api-status').textContent = 'Offline';
+                document.getElementById('api-status').style.color = '#ff0000';
+                return { networkHashrate: 0, difficulty: 0 };
+            }
+        }
+
+        function calculateEarnings() {
+            const hashrate = parseFloat(document.getElementById('hashrate').value) * 1e6; // Convert MH/s to H/s
+            if (isNaN(hashrate) || hashrate <= 0) {
+                alert('Please enter a valid hashrate');
+                return;
+            }
+
+            fetchNetworkData().then(({ networkHashrate, difficulty }) => {
+                const blockTime = 60; // 60 seconds
+                const blockReward = 4750; // 4750 TENZURA per block
+                const blocksPerHour = 3600 / blockTime;
+                const blocksPerDay = 24 * blocksPerHour;
+                const blocksPerWeek = 7 * blocksPerDay;
+                const blocksPerMonth = 30 * blocksPerDay;
+
+                // Calculate earnings based on hashrate proportion
+                const userShare = hashrate / (networkHashrate + hashrate); // Approximate share of network
+                const hourlyEarnings = userShare * blockReward * blocksPerHour;
+                const dailyEarnings = hourlyEarnings * 24;
+                const weeklyEarnings = dailyEarnings * 7;
+                const monthlyEarnings = dailyEarnings * 30;
+
+                document.getElementById('hourly').textContent = hourlyEarnings.toFixed(2);
+                document.getElementById('daily').textContent = dailyEarnings.toFixed(2);
+                document.getElementById('weekly').textContent = weeklyEarnings.toFixed(2);
+                document.getElementById('monthly').textContent = monthlyEarnings.toFixed(2);
+            });
+        }
+
+        // Fetch network data on page load
+        fetchNetworkData();
+    </script>
+</body>
+</html>
