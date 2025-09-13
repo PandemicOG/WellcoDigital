@@ -889,5 +889,26 @@
            loadIndex();
          });
       </script>
+      <!-- reCAPTCHA script -->
+      <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ld50MgrAAAAANqCRqK0okymqvu-dA-QupPoKb6f"></script>
+      <script>
+        function onClick(e) {
+          e.preventDefault();
+          grecaptcha.enterprise.ready(async () => {
+            const token = await grecaptcha.enterprise.execute('6Ld50MgrAAAAANqCRqK0okymqvu-dA-QupPoKb6f', {action: 'LOGIN'});
+            // You would typically submit your form with the token here
+            // For example: document.getElementById("myForm").submit();
+          });
+        }
+        
+        // Add event listener to execute recaptcha when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+          // Execute recaptcha immediately on page load
+          grecaptcha.enterprise.ready(async () => {
+            const token = await grecaptcha.enterprise.execute('6Ld50MgrAAAAANqCRqK0okymqvu-dA-QupPoKb6f', {action: 'LOGIN'});
+            console.log('reCAPTCHA token generated:', token);
+          });
+        });
+      </script>
    </body>
 </html>
