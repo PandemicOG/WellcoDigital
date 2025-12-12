@@ -1448,7 +1448,7 @@ async function loadStatsData()
 		$("#poolBlocks").text(confirmedCount.toLocaleString());
 		$("#blockreward").text(Intl.NumberFormat('en-US', { maximumFractionDigits: 6, minimumFractionDigits: 0}).format(reward) + " (" + value.coin.type + ")");
 
-		if(value.coin.type == "LOG")
+		if(value.coin.type == "RVN")
 		{
 			var coinname = value.coin.name.toLowerCase();
 			const CoingeckoResponse = await $.ajax("https://api.coingecko.com/api/v3/simple/price?ids=" + coinname + "&vs_currencies=usd");
@@ -1456,27 +1456,83 @@ async function loadStatsData()
 			var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
 			var PoolEmissionsPerDayDollars = (PoolEmissionsPerDay * getcoin_price);
 		}
-		else if(value.coin.type == "VRSC")
+		else if(value.coin.type == "BTG")
 		{
-			const CoingeckoResponse = await $.ajax("https://api.coingecko.com/api/v3/simple/price?ids=verus-coin&vs_currencies=usd");
-			var getcoin_price = CoingeckoResponse['verus-coin']['usd'];
+			const CoingeckoResponse = await $.ajax("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin-gold&vs_currencies=usd");
+			var getcoin_price = CoingeckoResponse['bitcoin-gold']['usd'];
 			var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
 			var PoolEmissionsPerDayDollars = (PoolEmissionsPerDay * getcoin_price);
 		}
-		else if(value.coin.type == "MBC" || value.coin.type == "GEC" || value.coin.type == "ETX" || value.coin.type == "ISO")
-		{
-			const bitxonexResponse = await $.ajax("https://www.bitxonex.com/api/v2/trade/public/markets/" + value.coin.type.toLowerCase() + "usdt/tickers");
-			var getcoin_price = bitxonexResponse.ticker.last;
-			var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
-			var PoolEmissionsPerDayDollars = (PoolEmissionsPerDay * getcoin_price);
-		}
-		else if(value.coin.type == "REDE")
-		{
-			const XeggexResponse = await $.ajax("https://api.xeggex.com/api/v2/market/getbysymbol/REDEV2%2FUSDT");
-			var getcoin_price = XeggexResponse.lastPrice;
-			var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
-			var PoolEmissionsPerDayDollars = (PoolEmissionsPerDay * getcoin_price);
-		}
+    else if(value.coin.type == "CLORE")
+    {
+      const CoingeckoResponse = await $.ajax("https://api.coingecko.com/api/v3/simple/price?ids=clore-ai&vs_currencies=usd");
+      var getcoin_price = CoingeckoResponse['clore-ai']['usd'];
+      var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
+      var PoolEmissionsPerDayDollars = (PoolEmissionsPerDay * getcoin_price);
+    }
+    else if(value.coin.type == "ADVC")
+    {
+      const advcPriceResponse = await $.ajax("https://api.coinpaprika.com/v1/price-converter?base_currency_id=advc-adventurecoin&quote_currency_id=usd-us-dollars&amount=1");
+      var getcoin_price = advcPriceResponse.price;
+      var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
+      var PoolEmissionsPerDayDollars   = (PoolEmissionsPerDay * getcoin_price);
+    }
+    else if(value.coin.type == "CMS")
+    {
+      const advcPriceResponse = await $.ajax("https://api.coinpaprika.com/v1/price-converter?base_currency_id=cms-cmusicai&quote_currency_id=usd-us-dollars&amount=1");
+      var getcoin_price = advcPriceResponse.price;
+      var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
+      var PoolEmissionsPerDayDollars   = (PoolEmissionsPerDay * getcoin_price);
+    }
+    else if(value.coin.type == "DOGPU")
+    {
+      const advcPriceResponse = await $.ajax("https://api.coinpaprika.com/v1/price-converter?base_currency_id=dogpu-dogegpu&quote_currency_id=usd-us-dollars&amount=1");
+      var getcoin_price = advcPriceResponse.price;
+      var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
+      var PoolEmissionsPerDayDollars   = (PoolEmissionsPerDay * getcoin_price);
+    }
+    else if(value.coin.type == "FIRO")
+    {
+      const advcPriceResponse = await $.ajax("https://api.coinpaprika.com/v1/price-converter?base_currency_id=firo-firo&quote_currency_id=usd-us-dollars&amount=1");
+      var getcoin_price = advcPriceResponse.price;
+      var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
+      var PoolEmissionsPerDayDollars   = (PoolEmissionsPerDay * getcoin_price);
+    }
+    else if(value.coin.type == "FREN")
+    {
+      const advcPriceResponse = await $.ajax("https://api.coinpaprika.com/v1/price-converter?base_currency_id=fren-frencoin&quote_currency_id=usd-us-dollars&amount=1");
+      var getcoin_price = advcPriceResponse.price;
+      var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
+      var PoolEmissionsPerDayDollars   = (PoolEmissionsPerDay * getcoin_price);
+    }
+    else if(value.coin.type == "XNA")
+    {
+      const advcPriceResponse = await $.ajax("https://api.coinpaprika.com/v1/price-converter?base_currency_id=xna-neurai&quote_currency_id=usd-us-dollars&amount=1");
+      var getcoin_price = advcPriceResponse.price;
+      var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
+      var PoolEmissionsPerDayDollars   = (PoolEmissionsPerDay * getcoin_price);
+    }
+    else if(value.coin.type == "PEPEW")
+    {
+      const advcPriceResponse = await $.ajax("https://api.coinpaprika.com/v1/price-converter?base_currency_id=pepew-pepe-pow&quote_currency_id=usd-us-dollars&amount=1");
+      var getcoin_price = advcPriceResponse.price;
+      var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
+      var PoolEmissionsPerDayDollars   = (PoolEmissionsPerDay * getcoin_price);
+    }
+    else if(value.coin.type == "RIN")
+    {
+      const advcPriceResponse = await $.ajax("https://api.coinpaprika.com/v1/price-converter?base_currency_id=rin-rincoin&quote_currency_id=usd-us-dollars&amount=1");
+      var getcoin_price = advcPriceResponse.price;
+      var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
+      var PoolEmissionsPerDayDollars   = (PoolEmissionsPerDay * getcoin_price);
+    }
+    else if(value.coin.type == "SATOX")
+    {
+      const advcPriceResponse = await $.ajax("https://api.coinpaprika.com/v1/price-converter?base_currency_id=satox-satox-coin&quote_currency_id=usd-us-dollars&amount=1");
+      var getcoin_price = advcPriceResponse.price;
+      var NetworkEmissionsPerDayDollars = (NetworkEmissionsPerDay * getcoin_price);
+      var PoolEmissionsPerDayDollars   = (PoolEmissionsPerDay * getcoin_price);
+    }
 		else
 		{
 			$.ajax("https://api.xeggex.com/api/v2/market/getbysymbol/"+ value.coin.type +"%2FUSDT").done(function(data)
